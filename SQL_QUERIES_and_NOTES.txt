@@ -1,0 +1,3685 @@
+	CREATE DATABASE COACHX;
+
+CREATE DATABASE
+Testdb;
+
+
+CREATE DATABASE 
+coachx_db
+
+DROP DATABASE
+Testdb
+
+
+
+
+
+
+CREATE TABLE Companies1
+(
+    id INT  ,
+    --400 to -300
+    name VARCHAR(20) ,
+    --256 (0 to 255)
+    Address TEXT ,
+    -- If you want write a long paragraph that can go over the lines
+    EMAIL VARCHAR(20) ,
+    Phone BIGINT
+    -- ABove then 10 digits nos 
+
+
+);
+
+
+DROP TABLE Companies1;
+
+
+SELECT *
+FROM Companies1;
+
+
+
+BACKUP DATABASE COACHX
+TO DISK = 'D:\COACHX.bak';
+
+
+
+
+
+BACKUP DATABASE COACHX
+TO DISK = 'D:\COACHX.bak'
+WITH DIFFERENTIAL;
+
+
+RESTORE DATABASE COACHX
+FROM DISK = 'D:\COACHX.bak';
+
+
+
+
+
+INSERT INTO 
+Companies1
+    (id , name , Address , EMAIL , Phone)
+VALUES
+    (1 , 'COACHXLIVE' , 'Pune' , 'wecare@coachxlive' , '8446049402');
+
+
+
+
+SELECT *
+FROM Companies1
+
+
+
+INSERT INTO 
+Companies1
+VALUES
+    (2, 'TCS' , 'Hinjewadi' , 'tcs@20034tcs.com', '9874563210');
+
+
+
+
+INSERT INTO 
+Companies1
+    (id , name , Address , EMAIL , Phone)
+VALUES
+    (3, 'Infosys' , 'Pune' , 'infosys@infos' , 84745645423 ),
+    (4 , 'Wipro' , 'Pune  Hinjewadi Phase 1'  , 'wipro@analytics'  , 87954651431),
+    (5 , 'Tesla' , 'USA' , 'tesla@tesla' , 4897461336),
+    (6 , 'Google' , 'USA' , 'google@1234' , 9845562114);
+
+
+
+
+
+
+
+
+
+
+
+SELECT *
+FROM Companies1;
+
+
+
+
+
+SELECT
+    name  , Address
+FROM
+    Companies1;
+
+
+
+SELECT *
+FROM
+    Companies1
+WHERE name = 'tesla';
+
+
+
+SELECT
+    name , Address , Phone
+FROM Companies1
+WHERE id = 3;
+
+
+
+--Greater than Operator:--->
+
+
+SELECT *
+FROM Companies1;
+
+
+CREATE TABLE ingredients
+(
+    ingredient_id INT ,
+    ingredient_name VARCHAR(30) ,
+    ingredient_price INT
+    ,
+
+);
+
+INSERT INTO ingredients
+    (ingredient_id, ingredient_name, ingredient_price)
+VALUES
+    (1, 'Beef', 5),
+    (2, 'Lettuce', 1),
+    (3, 'Tomatoes', 2),
+    (4, 'Taco Shell', 2),
+    (5, 'Cheese', 3),
+    (6, 'Milk', 1),
+    (7, 'Bread', 2);
+
+
+
+SELECT *
+FROM ingredients;
+
+
+
+
+SELECT *
+FROM ingredients
+WHERE  ingredient_price > '2';
+
+
+SELECT *
+FROM Companies1;
+
+SELECT
+    name , id , phone
+FROM Companies1
+WHERE name = 'Tesla' AND EMAIL = 'tesla@tesla';
+
+
+
+
+ALTER TABLE 
+Companies1
+ADD 
+SALARY INT ,
+JOBROLE VARCHAR(25) , 
+DateofJoining DATE;
+
+
+INSERT INTO 
+Companies1
+    ( Departments ,SALARY , JOBROLE , DateofJoining )
+VALUES
+    ('PWD' , '850000' , 'Junior Engineer' , '01/01/2023'),
+    (2, 'TCS' , 'Hinjewadi' , 'tcs@20034tcs.com', '9874563210', 'Data Analytics' , '60000' , 'SQL Developer', '06-07-2023'),
+    (3, 'Infosys' , 'Pune' , 'infosys@infos' , 84745645423 , '' ),
+    (4 , 'Wipro' , 'Pune  Hinjewadi Phase 1'  , 'wipro@analytics'  , 87954651431),
+    (5 , 'Tesla' , 'USA' , 'tesla@tesla' , 4897461336),
+    (6 , 'Google' , 'USA' , 'google@1234' , 9845562114);
+
+
+
+
+
+ALTER TABLE
+Companies1
+ALTER COLUMN EMAIL VARCHAR(30);
+
+UPDATE Companies1
+SET Departments = 'Data Analytics'
+WHERE id = '1';
+
+UPDATE Companies1
+SET Departments = 'Data Analytics' , SALARY = '60000' , JOBROLE = 'SQL Developer' , DateofJoining = '01-01-2023'
+WHERE id = '2';
+
+
+SELECT *
+FROM Companies1;
+
+UPDATE
+Companies1
+SET
+Departments = 'DATA ANALYTICS'
+WHERE 
+id = 3;
+
+
+
+UPDATE
+Companies1
+SET
+Departments = 'DATA ANALYTICS'
+WHERE 
+id = 4
+;
+
+
+UPDATE Companies1
+SET Departments = 'Data Analytics';
+
+
+
+
+CREATE TABLE Oxford
+(
+
+    ox_id int ,
+    ox_dep VARCHAR(20)
+
+
+
+);
+
+
+
+
+--- COPY :--------
+-- TO Copy the Contents of One table to another one:--
+
+SELECT *
+INTO
+Oxford1234
+FROM companies1;
+
+
+SELECT *
+FROM Oxford1234;
+
+
+----- Syntax of Selected columns :----
+SELECT column_name1 , Column_name2 , .........Column_name N
+INTO New_Table_name
+FROM OLd_table_name;
+
+
+
+
+
+
+SELECT Column_name1 , name2 , ....NAME N
+INTO New_Table_name
+FROM Old_table_name
+WHERE Condition
+
+
+
+
+
+SELECT id, name , Address
+INTO Companies2
+FROM Companies1
+WHERE id = 4;
+
+
+
+
+SELECT *
+FROM Companies2;
+
+
+
+
+
+
+
+
+USE COACHX;
+--Syntax :---
+SELECT *
+INTO Companies2
+IN db.Testdb
+FROM Companies1;
+
+
+
+
+DELETE FROM ingredients
+WHERE ingredient_id= 1;
+
+
+TRUNCATE TABLE ingredients;
+
+SELECT *
+FROM ingredients;
+
+
+--- Renaming the table name
+
+EXEC sp_rename 'Old_table_name','New_table_name';
+
+Use COACHX;
+EXEC sp_rename 'ingredients' ,'Ign';
+
+SELECT *
+FROM ign;
+
+
+
+---Renaming the Column_name 
+-- EXEC sp_rename 'table_name.old_column_name ' , 'New_column_name';
+
+EXEC sp_rename 'ign.ingredient_id' ,'ign_id';
+
+
+
+
+
+
+
+
+
+
+
+---SQL Constraints :---------
+
+
+
+/*
+
+Constraints                       Descriptions
+1) NOT NULL :                Values Cannot be Null
+2) UNIQUE   :            Values cannot match any older Values.
+3) PRIMARY KEY :        USed to Uniquely Identify a row.(a record in a table)
+4) FOREIGN KEY :         It Establishes a Refrences a row in another table .(pointing the primary key in another table.)
+5) CHECK       :      Validates the condition for  a new value.
+6) DEFAULT :         Set a Default value in Column if not passed.
+7) CREATE INDEX :     Used to speedup the read processs.
+
+
+*/
+
+---- NOT NULL Constraints --------
+
+
+USE COACHX;
+
+CREATE TABLE Colleges12
+(
+
+    college_id INT PRIMARY KEY ,
+    college_name VARCHAR(50) NOT NULL UNIQUE,
+    college_dept VARCHAR(60) NOT NULL ,
+    college_library VARCHAR(40) NOT NULL ,
+    college_labs VARCHAR(50) NOT NULL,
+    college_parking VARCHAR(20)
+
+
+
+
+);
+
+
+SELECT *
+FROM Colleges12;
+
+
+
+INSERT INTO 
+Colleges12
+    (college_id , college_name , college_dept , college_library , college_labs , college_parking)
+VALUES
+    (1, 'Poona College' , 'Physics' , 'Boys Library' , 'Physics Labs' , 'Two Wheeler ') ,
+    (2, 'Sinhgad College' , ' BBA ' , 'girls Library' , 'microbiology Labs' , 'Two Wheeler ') ,
+    (, 'Trinity College' , ' BCS ' , 'Boys Library' , 'Maths Labs' , 'Two Wheeler ') ,
+    (, 'Chaitainya College' , 'Chemistry' , 'girls Library' , 'Physics Labs' , 'four Wheeler ') ,
+    (, 'FG College' , 'Maths' , 'Boys Library' , 'CA Labs' , 'Three Wheeler ') ,
+    (6, 'Modern College' , 'CS' , 'Boys Library' , 'CS Labs' , 'Four Wheeler ') ,
+    (7, 'DY patil College' , 'Physics' , 'Boys Library' , 'Biology  Labs' , 'Two Wheeler ') ,
+    (8, 'Christ College' , ' Biology ' , 'Girls Library' , 'Zoology Labs' , 'Two Wheeler ')
+;
+
+
+
+DELETE FROM Colleges12;
+
+--TRUNCATE and DELETE FROM   boht are same;
+
+
+--Redundant (Duplicated Data)--
+
+
+SELECT *
+FROM Colleges12;
+
+
+
+-- PRIMARY KEY = NOT NULL + UNIQUE ;
+
+-- Composite PK :---- which is a PK made from two or more columns 
+CREATE TABLE userdata
+(
+    user_id INT  ,
+    userdataid INT,
+    info VARCHAR(201) ,
+    PRIMARY KEY (user_id , userdataid)
+);
+
+SELECT*
+FROM userdata;
+
+
+
+
+
+
+/*
+
+KEYS :---
+1) Candidate Keys  : - one PK
+
+
+
+2) Compound Keys  :-- Multiple PK(Composite PK)
+
+
+
+
+Multiple Cnadidate Keys can exits ina table:--
+        PK
+
+
+        Alternate Key
+         FORIGN KEY (Compund KEY):-- Functional 
+*/
+
+
+
+CREATE TABLE userdata1
+(
+    user_id INT PRIMARY KEY  ,
+    userdataid INT REFERENCES Colleges12(college_id),
+    info VARCHAR(201)
+
+);
+
+SELECT *
+FROM userdata1;
+
+
+
+
+-- DEFAULT Constraints :---
+CREATE TABLE Colleges123
+(
+
+    college_id INT PRIMARY KEY ,
+    college_name VARCHAR(50) NOT NULL UNIQUE,
+    college_dept VARCHAR(60) NOT NULL ,
+    college_library VARCHAR(40) NOT NULL ,
+    college_labs VARCHAR(50) NOT NULL,
+    college_parking VARCHAR(20)
+
+
+
+
+);
+
+
+SELECT *
+FROM Colleges123;
+
+
+INSERT INTO 
+Colleges123
+    (college_id , college_name , college_dept , college_library , college_labs , college_parking)
+VALUES
+    (1, 'Poona College' , 'Physics' , 'Boys Library' , 'Physics Labs' , 'Two Wheeler ') ,
+    (2, 'Sinhgad College' , ' BBA ' , 'girls Library' , 'microbiology Labs' , 'Two Wheeler ') ,
+    (3, 'Trinity College' , ' BCS ' , 'Boys Library' , 'Maths Labs' , 'Two Wheeler ') ,
+    (4, 'Chaitainya College' , 'Chemistry' , 'girls Library' , 'Physics Labs' , 'four Wheeler ') ,
+    (5, 'FG College' , 'Maths' , 'Boys Library' , 'CA Labs' , 'Three Wheeler ') ,
+    (6, 'Modern College' , 'CS' , 'Boys Library' , 'CS Labs' , 'Four Wheeler ') ,
+    (7, 'DY patil College' , 'Physics' , 'Boys Library' , 'Biology  Labs' , 'Two Wheeler ') ,
+    (8, 'Christ College' , ' Biology ' , 'Girls Library' , 'Zoology Labs' , 'Two Wheeler ')
+;
+
+
+USE COACHX
+
+-------- DEFAULT Constraints -------
+
+CREATE TABLE Student
+(
+
+    Stud_id INT PRIMARY KEY ,
+    Stud_name VARCHAR(20) ,
+    Stud_Country VARCHAR(30) DEFAULT 'INDIA'
+
+
+
+);
+SELECT *
+FROM Student;
+
+INSERT INTO
+Student
+    (Stud_id ,Stud_name , Stud_Country)
+VALUES
+    (1 , 'AHANA' , 'UAE') ,
+    (2 , 'VIBHA' , 'AUSTRALIA') ,
+    (3 , 'Prasanjeet' , 'USA') ,
+    (4, 'Jakir' , 'INDIA') ,
+    (5 , 'Durgesh' , 'Singapore') ,
+    (6 , 'SURESH', 'JAPAN');
+
+
+
+
+
+ALTER TABLE Student
+DROP CONSTRAINT Stud_id;
+
+
+
+
+
+ALTER TABLE [dbo].[Student] 
+DROP CONSTRAINT [PK__Student__09AFA909D430013B]
+WITH ( ONLINE = OFF )
+GO
+
+
+
+
+
+
+
+/*
+
+--Naming Rules :--
+CREATE TABLE 
+Employee(
+
+
+    @Employee_ID1  INT NOT NULL  ,
+
+
+
+);
+
+
+CREATE TABLE 
+_Employee();
+
+
+
+CREATE TABLE 
+Employee1234();
+
+
+CREATE TABLE 
+employee();
+
+iNSERT INTO Employee VALUES("ggde hhgg"   ,'ggffge ggggggggj')
+
+ 
+
+STRINGS :--- Combinbation of charcters 
+
+Charcters :-"a , b, 1 , 2 ,@, # , $  %  g,"  a , b, 1 , 2 ,@, # , $  %  g,  . ,',' '\' ,
+
+
+
+
+Employee_ID1 , Employee_Name2
+
+
+@EMPLOYEE 
+
+
+
+#-- Drop a temporary table called '#TableName'
+-- Drop the table if it already exists
+IF OBJECT_ID('tempDB..#TableName', 'U') IS NOT NULL
+DROP TABLE #TableName
+GO
+-- Create the temporary table from a physical table called 'TableName' in schema 'dbo' in database 'DatabaseName'
+SELECT *
+INTO #TableName
+FROM [DatabaseName].[dbo].[TableName]
+WHERE /* add search conditions here */
+
+
+
+
+
+/*
+EmployeeTable
+
+EmployeeTable
+_employe_table_
+
+
+
+*/
+
+
+
+
+/*
+
+SQL JOINS :----
+
+
+SQL JOIN is used to Joins two tables based on Common Column and 
+Select records that have matching values in these columns.
+
+If I didn't get that matching values then what Values I get 
+
+
+
+*/
+
+
+
+/*
+JOIN :--
+
+SELECT 
+Table1.column_name1 , Table1.column_name2 , Table2.column_name1 , Table2.column_name2 ....TableN.Column_name(n)
+FROM 
+TABLE_1
+JOIN 
+TABLE_2
+ON 
+Table1.Common_column_name = Table2.Common_column_name;
+
+
+
+
+
+JOIN WITH ALIASES(A) WITH Tables:---
+
+SELECT 
+T1.columns_Name, T1.column_name ,T2.colum_Name
+FROM 
+Table1 AS T1
+JOIN 
+Table2 AS T2
+ON
+T1.Common_Column_name = T2.Common_Column_name
+
+
+
+ALIASES With Tables  and Columns
+
+
+SELECT 
+T1.columns_Name AS cn1, T1.column_name AS cn2 ,T2.colum_Name AS cn3
+FROM 
+Table1 AS T1
+JOIN 
+Table2 AS T2
+ON
+T1.Common_Column_name = T2.Common_Column_name
+
+
+
+
+
+
+*/
+
+SELECT * FROM Student;
+SELECT * FROM Colleges123;
+
+
+
+
+SELECT
+Student.Stud_id , Student.Stud_name , Colleges123.college_labs
+FROM 
+Student
+JOIN 
+Colleges123
+ON
+Student.Stud_id = Colleges123.college_id;
+
+
+
+
+
+
+
+-- ALIASES only with TABLES :----
+
+SELECT
+S.Stud_id , S.Stud_name , C.college_labs
+FROM 
+Student AS S
+JOIN 
+Colleges123 AS C
+ON
+S.Stud_id = C.college_id;
+
+-- ALIASES only with TABLES and with Columns:----
+SELECT
+S.Stud_id  AS sid, S.Stud_name AS sn , C.college_labs AS clab
+FROM 
+Student AS S
+JOIN 
+Colleges123 AS C
+ON
+S.Stud_id = C.college_id;
+
+
+
+
+
+
+
+
+/*
+ TYPES OF  JOINS:--
+ 1) INNER JOIN
+ 2) LEFT JOIN 
+ 3) RIGHT JOIN
+ 4) FULL OUTER JOIN
+ 5) SELF JOIN
+ 6) CROSS JOIN
+ 7) NATURAL JOIN
+
+
+*/
+
+
+/*
+
+SYNTAX of INNER JOINS:--
+
+SELECT 
+Table1.column_name1 , Table1.column_name2 , Table2.column_name1 , Table2.column_name2 ....TableN.Column_name(n)
+FROM 
+TABLE_1
+INNER JOIN 
+TABLE_2
+ON 
+Table1.Common_column_name = Table2.Common_column_name;
+
+*/
+
+--INNER JOIN  is same as JOIN Without ALIASES:--
+
+SELECT
+Student.Stud_id , Student.Stud_name , Colleges123.college_labs
+FROM 
+Student
+INNER JOIN 
+Colleges123
+ON
+Student.Stud_id = Colleges123.college_id;
+
+
+
+
+/*
+SYNTAXES of INNER JOIN:---
+
+JOIN WITH ALIASES(A) WITH Tables:---
+
+SELECT 
+T1.columns_Name, T1.column_name ,T2.colum_Name
+FROM 
+Table1 AS T1
+INNER JOIN 
+Table2 AS T2
+ON
+T1.Common_Column_name = T2.Common_Column_name
+
+
+
+ALIASES With Tables  and Columns
+
+
+SELECT 
+T1.columns_Name AS cn1, T1.column_name AS cn2 ,T2.colum_Name AS cn3
+FROM 
+Table1 AS T1
+INNER JOIN 
+Table2 AS T2
+ON
+T1.Common_Column_name = T2.Common_Column_name
+
+*/
+
+
+
+
+--INNER JOIN  is same as JOIN With ALIASES(Tables):--
+SELECT
+S.Stud_id , S.Stud_name , C.college_labs
+FROM 
+Student AS S
+INNER JOIN 
+Colleges123 AS C
+ON
+S.Stud_id = C.college_id;
+
+
+--INNER JOIN  is same as JOIN With ALIASES(Tables and Columns):--
+
+SELECT
+S.Stud_id AS Sid , S.Stud_name AS Sn , C.college_labs AS CLab
+FROM 
+Student AS S
+INNER JOIN 
+Colleges123 AS C
+ON
+S.Stud_id = C.college_id;
+
+
+
+
+/*
+
+LEFT JOINS :--
+
+It Joins two tables based on Common Coloumn and Selects the records
+that have Matching Values in  these columns and Remaining rows from the LEFT TABLE.
+
+
+
+SYNTAXES of LEFT JOINS :--
+
+SELECT 
+Table1.column_name1 , Table1.column_name2 , Table2.column_name1 , Table2.column_name2 ....TableN.Column_name(n)
+FROM 
+TABLE_1
+LEFT JOIN 
+TABLE_2
+ON 
+Table1.Common_column_name = Table2.Common_column_name;
+
+
+*/
+
+
+SELECT
+Student.Stud_id , Student.Stud_name ,Student.Stud_Country, Colleges123.college_labs , Colleges123.college_dept
+FROM 
+Student 
+LEFT JOIN 
+Colleges123 
+ON
+Student.Stud_id = Colleges123.college_id;
+
+
+
+
+SELECT * FROM Student;
+SELECT * FROM Colleges123;
+
+
+SELECT
+St.Stud_id , St.Stud_name ,St.Stud_Country,C123.college_labs , C123.college_dept
+FROM 
+Student AS St
+LEFT JOIN 
+Colleges123 AS C123
+ON
+St.Stud_id = C123.college_id;
+
+
+
+
+
+-- RIGHT JOIN :----
+
+/*
+
+It Joins two tables based on Common Coloumn and Selects the records
+that have Matching Values in  these columns and Remaining rows from the RIGHT TABLE.
+
+
+*/
+
+
+
+
+SELECT
+Student.Stud_id , Student.Stud_name ,Student.Stud_Country, Colleges123.college_labs , Colleges123.college_dept
+FROM 
+Student 
+RIGHT JOIN 
+Colleges123 
+ON
+Student.Stud_id = Colleges123.college_id;
+
+
+-- WITH TABLE ALIASES:--
+
+
+
+
+-- WITH COLUMN ALIASES---
+
+
+
+
+-- FULL OUTER JOIN :--
+
+
+/*
+
+It Joins two tables based on Common Coloumn and Selects the records
+that have Matching Values in  these columns and Remaining rows from the BOTH the  TABLEs.
+
+
+*/
+
+
+SELECT
+Student.Stud_id , Student.Stud_name , Student.Stud_Country ,Colleges123.college_dept , Colleges123.college_labs, Colleges123.college_name
+FROM 
+Student
+FULL OUTER JOIN 
+Colleges123
+ON Student.Stud_id = Colleges123.college_id;
+
+
+
+
+-- WITH Table Aliases:--
+
+
+
+---With Column Aliases:--
+
+
+
+
+
+/*
+CROSS  JOIN :--
+
+It is used to combine each row of one table with each row of another table and 
+it will return cartesian product of the sets  of rows from the table we have joined.
+
+
+Cartesian JOIN :--
+
+A = {a ,b ,c}
+
+B = {1,2,3}
+
+
+AxB = {a1 , a2 , a3 , b1 , b2 ,b3 , c1 , c2 ,c3}
+
+
+
+
+Syntax of CROSS  JOIN :--
+SELECT Column_name1,
+       Column_name2,
+       Column_name3,
+       .
+       .
+       .
+       Coloumn_name N
+
+FROM Table_1
+    CROSS JOIN Table_2;
+
+
+
+*/
+
+
+CREATE TABLE 
+Meals(MealName VARCHAR(100))
+
+CREATE TABLE
+Drinks(DrinkName VARCHAR(100))
+
+
+INSERT INTO 
+Meals
+VALUES('Omlet') ,
+('Fried Egg'),
+('Biryani'),
+('Daal Rice');
+
+
+INSERT INTO
+Drinks
+VALUES('Orange Juice'),
+('Mango Juice'),
+('Kiwi Juice'),
+('PineApple Juice');
+
+SELECT * FROM 
+Meals;
+
+
+SELECT * FROM 
+Drinks;
+
+
+
+SELECT * FROM
+Meals
+CROSS JOIN
+Drinks
+
+
+SELECT * FROM  Meals , Drinks;
+
+SELECT CONCAT_WS('-' , MealName ,DrinkName)
+AS MenuList
+FROM Meals CROSS JOIN
+Drinks;
+
+
+
+/*
+SELF JOIN :---
+
+
+
+
+*/
+
+
+SELECT
+Student.Stud_id , Student.Stud_name , Student.Stud_Country ,Colleges123.college_dept , Colleges123.college_labs, Colleges123.college_name
+FROM 
+Student , Colleges123
+WHERE Student.Stud_id = Colleges123.college_id;
+
+
+SELECT
+S.Stud_id , S.Stud_name , S.Stud_Country ,C.college_dept , C.college_labs, C.college_name
+FROM 
+Student AS S, Colleges123 AS C
+WHERE S.Stud_id = C.college_id;
+
+
+--With Column ALIASES:---------
+
+
+
+
+/*
+
+
+NATURAL JOIN :--- can be a 
+    A INNER JOIN 
+    A LEFT OUTER JOIN
+    A RIGHT OUTER JOIN
+
+
+Out of these three By Default it is a INNER JOIN
+
+
+
+Syntax of NATURAL  JOIN :--
+
+SELECT *
+FROM 
+Table_1
+NATURAL JOIN 
+Table_2
+
+*/
+
+
+SELECT Student.Stud_id , Student.Stud_Country ,Colleges123.college_labs ,Colleges123.college_library
+FROM Student
+LEFT OUTER  JOIN 
+Colleges123
+ON Student.Stud_id = Colleges123.college_id;
+
+
+
+SELECT Student.Stud_id , Student.Stud_Country ,Colleges123.college_labs ,Colleges123.college_library
+FROM Student
+RIGHT OUTER  JOIN 
+Colleges123
+ON Student.Stud_id = Colleges123.college_id;
+
+
+
+
+
+SELECT Student.Stud_id , Student.Stud_Country 
+FROM Student
+NATURAL  JOIN 
+Colleges123
+
+
+
+
+
+
+/*
+
+SYNTAX of  JOIN QUERIES ON MULTIPLE TABLES :---
+
+Syntax of Inner Join:---
+
+SELECT table1.column_name1 ,
+       table2.column_name2 ,
+       table3.column_name3 ,
+       .
+       .
+       .
+       table_n.column_name_n
+
+
+FROM 
+table1
+INNER JOIN 
+table2
+ON 
+table1.common_column_name = table2.common_column_name
+INNER  JOIN
+table3
+ON 
+table1.common_column_name = table3.common_column_name
+INNER JOIN 
+table_n
+ON
+table3.common_column_name = table_n.common_column_name;
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE products (
+	product_name nvarchar(50),
+	price int
+)
+
+CREATE TABLE products1 (
+	product_name nvarchar(50),
+	price int
+)
+
+CREATE TABLE products2 (
+	product_name nvarchar(50),
+	price int
+)
+
+
+CREATE TABLE products3 (
+	product_name nvarchar(50),
+	price int
+)
+
+INSERT INTO products (product_name, price)
+
+VALUES
+
+('Desktop Computer',800),
+('Laptop',1200),
+('Tablet',200),
+('Monitor',350),
+('Printer',150);
+
+
+INSERT INTO products1 (product_name, price)
+
+VALUES
+
+('Desktop ',800),
+('Palm Top',1200),
+('Tablet',200),
+('Floppy',350),
+('Printer',150);
+
+
+
+INSERT INTO products2 (product_name, price)
+
+VALUES
+
+('Desktop Computer',800),
+('Laptop',1200),
+('Tablet',200),
+('Monitor',350),
+('Printer',150);
+
+
+
+
+INSERT INTO products3 (product_name, price)
+
+VALUES
+
+('Desktop Computer',800),
+('Laptop',1200),
+('Phone',200),
+('Floppy Disk',350),
+('Hardisk',150);
+
+
+
+
+SELECT products.product_name , products1.price ,products2.product_name , products3.price
+FROM products
+INNER JOIN
+products1
+ON products.price = products1.price
+INNER JOIN
+products2
+ON products.price = products2.price
+INNER JOIN
+products3
+ON products2.price = products3.price;
+
+
+
+/*
+
+
+
+SELECT table1.column_name1 ,
+       table2.column_name2 ,
+       table3.column_name3 ,
+       .
+       .
+       .
+       table_n.column_name_n
+
+
+FROM 
+table1
+LEFT JOIN 
+table2
+ON 
+table1.common_column_name = table2.common_column_name
+LEFT JOIN
+table3
+ON 
+table1.common_column_name = table3.common_column_name
+LEFT JOIN 
+table_n
+ON
+table3.common_column_name = table_n.common_column_name;
+
+
+
+*/
+
+
+
+
+/*
+
+
+SELECT table1.column_name1 ,
+       table2.column_name2 ,
+       table3.column_name3 ,
+       .
+       .
+       .
+       table_n.column_name_n
+
+
+FROM 
+table1
+RIGHT JOIN 
+table2
+ON 
+table1.common_column_name = table2.common_column_name
+RIGHT   JOIN
+table3
+ON 
+table1.common_column_name = table3.common_column_name
+RIGHT JOIN 
+table_n
+ON
+table3.common_column_name = table_n.common_column_name;
+
+
+
+
+
+
+*/
+
+
+
+
+
+
+/*
+
+
+SELECT table1.column_name1 ,
+       table2.column_name2 ,
+       table3.column_name3 ,
+       .
+       .
+       .
+       table_n.column_name_n
+
+
+FROM 
+table1
+FULL OUTER  JOIN 
+table2
+ON 
+table1.common_column_name = table2.common_column_name
+FULL OUTER   JOIN
+table3
+ON 
+table1.common_column_name = table3.common_column_name
+FULL OUTER JOIN 
+table_n
+ON
+table3.common_column_name = table_n.common_column_name;
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+SELECT table1.column_name1 ,
+       table2.column_name2 ,
+       table3.column_name3 ,
+       .
+       .
+       .
+       table_n.column_name_n
+
+
+FROM 
+table1
+ JOIN 
+table2
+ON 
+table1.common_column_name = table2.common_column_name
+ JOIN
+table3
+ON 
+table1.common_column_name = table3.common_column_name
+ JOIN 
+table_n
+ON
+table3.common_column_name = table_n.common_column_name;
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+-- Logicals Operators :----
+
+
+-- AND  ---------- OR -------NOT------- are called as Logical Operators 
+
+
+/*
+
+
+
+
+
+*/
+
+
+Select * from Colleges123
+
+
+-- SQL AND Operator :----
+
+/*
+-- We use SQL AND operators selects data if All Conditions are true then
+-- only it will return the table , and if any one conditions is false then will not return anything
+
+
+AND LOGICAL Table :----
+
+Table_A       Table_B             OUTPUT_TABLE 
+TRUE           TRUE              TRUE
+TRUE           FALSE               FALSE
+FALSE          TRUE                FALSE
+FALSE          FALSE               FALSE
+
+
+TRUE :-- Means it's Showing the reocrds 
+FALSE :-- Its not showing the records
+
+
+
+*/
+  
+  SELECT * FROM
+  Colleges123;
+
+
+SELECT 
+college_name  , college_dept
+FROM 
+Colleges123
+WHERE college_name= 'Modern College' AND college_dept= 'MATHS';
+
+
+SELECT 
+college_name  , college_parking , college_labs,college_library
+FROM 
+Colleges123
+WHERE college_name= 'DY Patil College' AND college_parking='Two Wheeler' ;
+
+
+
+-- SQL OR Operator :--
+
+
+/*
+
+SQL OR Operator selects the DATA if any one condition is TRUE the it will return the table 
+
+
+
+OR  LOGICAL Table :----
+
+Table_A       Table_B             OUTPUT_TABLE 
+TRUE           TRUE               TRUE
+TRUE           FALSE              TRUE  
+FALSE          TRUE               TRUE
+FALSE          FALSE              FALSE
+
+*/
+
+
+
+
+
+
+
+SELECT college_name , college_labs
+FROM
+Colleges123
+WHERE college_name = 'DY Patil ' OR college_labs= 'CS';
+
+
+
+SELECT college_name , college_labs
+FROM
+Colleges123
+WHERE college_name = 'DY Patil ' OR college_labs= 'Biology' AND college_name='FG College' OR college_labs='Maths'
+
+
+
+
+--- NOT Operators :----
+
+
+/*
+SQL NOT operator SElects the DATA if the given condition is FALSE then it will return TRUE
+
+
+Table_A          OUTPUT_TABLE
+TRUE                FALSE
+FALSE              TRUE
+
+
+
+*/
+
+SELECT college_name , college_library
+FROM 
+Colleges123
+WHERE NOT college_name='DY Patil College';
+
+
+
+SELECT college_name ,college_dept  , college_labs
+FROM
+Colleges123
+WHERE NOT college_name='Modern College' AND NOT college_name= 'DY Patil College';
+
+
+
+SELECT college_name ,college_dept  , college_labs
+FROM
+Colleges123
+WHERE NOT college_name='Modern College' OR NOT college_name= 'Poona College';
+
+/*
+NOT AND Table :--  converted into OR Table
+NOT OR Table :--    converted into AND Table
+
+*/
+
+/*
+Operators:--
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+/*
+
+X + Y 
+
+
+X and Y :-- Operand 
++ :- Operator
+
+*/
+
+/**
+
+Operators are just symbols that are used to perform operations with values 
+
+SELECT Operators :--
+
+
+Differnt types of Operators :--
+
+1) Arithmetic Operator 
+2) Comparison Operator
+3) Logical Operator
+
+
+
+
+
+1) Arithmetic Operators :--
+    It is used to perform simple arthimetic Operations such as Addition  , Subtraction , Multiplication  , Division  and Modulo(%)
+    + :-- Addition
+    - :- Subtraction
+    * :- Multiplication
+    / :- Division
+    % :- Modulo
+
+2) Comparison Operators:--
+    We can compare two values using comparison operators in SQL
+    = :- Equal to 
+    > :- greater than
+    < :- Less than
+    <= Less than Equal to
+    >= Greater than Equal to 
+    == Equal to Equal to
+    != (<>) Not Equal to 
+
+
+3) Logical Operators :--
+    By using logical operators it will return be either True or false 
+    AND 
+    OR
+    NOT 
+    ANY and ALL
+    BETWEEN 
+    EXISTS
+    IN
+    LIKE
+    IS NULL
+
+
+
+*/
+
+
+
+
+
+Select * from Colleges123;
+
+
+CREATE TABLE 
+Order11(
+
+    Order_id INT Primary Key,
+    Order_amount INT ,
+    Order_name VARCHAR(20)
+
+
+
+); 
+
+INSERT into
+Order11(Order_id ,Order_amount ,Order_name)
+VALUES
+(1 , 10000 , 'Ladys Handbags'), 
+(2 , 20000 , 'Phones') , 
+(3 , 30000 , 'Laptop') ,
+(4 , 40000  , 'Gaming') , 
+(5 , 100000 , 'Ryzex Gaming setups') ,
+(6 , 300000 , 'PS5');
+
+
+SELECT * FROM Order11;
+
+
+-- Addition(Increment) Operators :--
+
+SELECT Order_id  ,Order_name , Order_amount+500 AS Total_amount
+FROM Order11;
+
+
+-- Subtraction(Decrement) Operators -----
+
+SELECT Order_id  ,Order_name , Order_amount-200 AS Total_amount
+FROM Order11;
+
+SELECT Order_id  ,Order_name ,  Order_amount-200 AS Total_amount_deductions
+FROM Order11;
+
+
+-- Multiplication and Product (times the) Operator :--
+
+SELECT Order_id  ,Order_name , Order_amount*20 AS Total_amount
+FROM Order11;
+
+--DIVISION Operator--
+
+SELECT Order_id  ,Order_name , Order_amount/224 AS Total_amount
+FROM Order11;
+
+
+
+
+
+
+--Modulo (Remainder ) Operator---
+
+
+/*
+7%100 = 2
+
+    :---Divisor_-->  __5__| 10 :-- Divident | 2  :-- Quotient
+            -10
+            -----
+              0<--- Remainder
+
+
+              n%10 = n
+              n%100 = n
+              n %1000 = n
+              n % 100000 = n
+
+
+              
+
+
+*/
+
+
+
+
+
+SELECT 7%100 AS RESULT ;
+
+
+SELECT 9%1000 AS RESULT ;
+
+
+
+
+--- Comparison Operators :--
+Select* FROM
+Order11;
+
+
+--1) Equal to 
+
+SELECT Order_id , Order_name
+FROM
+Order11
+WHERE Order_amount = 40000;
+
+
+
+--2) Less Than Opertions
+
+SELECT Order_id , Order_name , Order_amount
+FROM
+Order11
+WHERE Order_amount < 40000;
+
+
+--Greater Than 
+SELECT Order_id 
+FROM
+Order11
+WHERE Order_amount > 40000;
+
+---Greater than Equal to 
+SELECT Order_id 
+FROM
+Order11
+WHERE Order_amount >= 50000;
+
+
+--Less Than Equal to 
+
+SELECT Order_id  , Order_amount ,Order_name
+FROM
+Order11
+WHERE Order_amount<= 100000;
+
+
+--NOT Equal to with !=
+
+SELECT Order_id  , Order_name ,Order_amount
+FROM
+Order11
+WHERE Order_amount != 40000;
+
+
+
+--NOT Equal to with <>
+SELECT Order_id  , Order_name ,Order_amount
+FROM
+Order11
+WHERE Order_amount <> 40000;
+
+
+-- Logicals Operators :----
+
+
+-- AND  ---------- OR -------NOT------- are called as Logical Operators 
+
+
+/*
+
+
+
+
+
+*/
+
+
+Select * from Colleges123
+
+
+-- SQL AND Operator :----
+
+/*
+-- We use SQL AND operators selects data if All Conditions are true then
+-- only it will return the table , and if any one conditions is false then will not return anything
+
+
+AND LOGICAL Table :----
+
+Table_A       Table_B             OUTPUT_TABLE 
+TRUE           TRUE              TRUE
+TRUE           FALSE               FALSE
+FALSE          TRUE                FALSE
+FALSE          FALSE               FALSE
+
+
+TRUE :-- Means it's Showing the reocrds 
+FALSE :-- Its not showing the records
+
+
+
+*/
+  
+  SELECT * FROM
+  Colleges123;
+
+
+SELECT 
+college_name  , college_dept
+FROM 
+Colleges123
+WHERE college_name= 'Modern College' AND college_dept= 'MATHS';
+
+
+SELECT 
+college_name  , college_parking , college_labs,college_library
+FROM 
+Colleges123
+WHERE college_name= 'DY Patil College' AND college_parking='Two Wheeler' ;
+
+
+
+-- SQL OR Operator :--
+
+
+/*
+
+SQL OR Operator selects the DATA if any one condition is TRUE the it will return the table 
+
+
+
+OR  LOGICAL Table :----
+
+Table_A       Table_B             OUTPUT_TABLE 
+TRUE           TRUE               TRUE
+TRUE           FALSE              TRUE  
+FALSE          TRUE               TRUE
+FALSE          FALSE              FALSE
+
+*/
+
+
+
+
+
+
+
+SELECT college_name , college_labs
+FROM
+Colleges123
+WHERE college_name = 'DY Patil ' OR college_labs= 'CS';
+
+
+
+SELECT college_name , college_labs
+FROM
+Colleges123
+WHERE college_name = 'DY Patil ' OR college_labs= 'Biology' AND college_name='FG College' OR college_labs='Maths'
+
+
+
+
+--- NOT Operators :----
+
+
+/*
+SQL NOT operator SElects the DATA if the given condition is FALSE then it will return TRUE
+
+
+Table_A          OUTPUT_TABLE
+TRUE                FALSE
+FALSE              TRUE
+
+
+
+*/
+
+SELECT college_name , college_library
+FROM 
+Colleges123
+WHERE NOT college_name='DY Patil College';
+
+
+
+SELECT college_name ,college_dept  , college_labs
+FROM
+Colleges123
+WHERE NOT college_name='Modern College' AND NOT college_name= 'DY Patil College';
+
+
+
+SELECT college_name ,college_dept  , college_labs
+FROM
+Colleges123
+WHERE NOT college_name='Modern College' OR NOT college_name= 'Poona College';
+
+/*
+NOT AND Table :--  converted into OR Table
+NOT OR Table :--    converted into AND Table
+
+*/
+
+--SQL ANY ----
+
+
+/*
+SQL ANY compares  a value of the first table with all values of the second tables
+ and return the row if there is a match with any value
+
+
+
+*/
+
+SELECT * FROM
+Colleges123
+
+SELECT* from
+Student
+
+SELECT * 
+FROM Colleges123
+WHERE college_id= ANY(
+
+    SELECT Stud_id
+    FROM Student      -- Subquery
+
+)
+
+
+
+--SQL ALL Operator :--
+
+
+/*
+SQL ANY compares  a value of the first table with all values of the second tables
+ and return the row if there is a match with ALL  values.
+
+
+
+*/
+SELECT* FROM
+Order11
+WHERE Order_amount>ALL(
+
+
+    SELECT price
+    FROM  products3
+)
+
+
+SELECT* FROM
+Order11
+WHERE Order_amount=ALL(
+
+
+    SELECT price
+    FROM  products3
+)
+
+
+
+
+
+select * from  products3;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- SQL Between operator--
+
+
+/*
+
+To match the values in a range 
+
+*/
+
+
+SELECT Order_id , Order_amount , Order_name
+FROM Order11
+WHERE Order_amount BETWEEN 10000 AND 40000;
+
+
+
+SELECT Order_id , Order_amount , Order_name
+FROM Order11
+WHERE Order_amount NOT BETWEEN 10000  AND 40000;
+
+
+SELECT
+college_id   ,college_name , college_library
+FROM
+Colleges123
+WHERE college_name BETWEEN 'Chaityanya' AND 'Sinhgad';
+
+
+SELECT
+Order_id , Order_name
+FROM
+Order11
+WHERE Order_name BETWEEN 'L' AND 'R';
+
+
+
+
+
+
+SELECT * FROM Colleges123;
+SELECT* FROM Order11
+
+--EXITS ---
+
+/*
+Exists Operators executes the outer sql query if the subquery is NOT NULL (Empty-result set)
+
+
+
+
+*/
+
+   SELECT Order_id
+    FROM Order11 
+   WHERE  EXISTS (
+
+     SELECT 
+     college_id ,college_name ,college_parking 
+     FROM
+    Colleges123
+    WHERE Colleges123.college_id = Order11.Order_id
+
+
+ 
+);
+
+
+   SELECT Order_id
+    FROM Order11 
+   WHERE NOT  EXISTS (
+
+     SELECT 
+     college_id ,college_name ,college_parking 
+     FROM
+    Colleges123
+    WHERE Colleges123.college_id = Order11.Order_id
+
+
+ 
+);
+
+
+--LIKE Operator :--
+/*
+
+LIKE Operator in SQL is used with WHERE clause to geta result set that matches the given string Pattern
+
+**/
+
+
+
+SELECT * 
+FROM Colleges123 
+WHERE college_name LIKE 'FG College' OR   college_id LIKE 6
+
+
+
+SELECT * 
+FROM Colleges123 
+WHERE college_id LIKE 2
+
+
+-- LIKE WITH WILDCARDS:--
+
+/*
+% :-- means zero or more characters is a wildcard character
+
+_ :-- 
+
+*/
+
+-- FirstWord
+SELECT * 
+FROM 
+Colleges123
+WHERE college_name LIKE 'F%';
+
+
+
+
+
+SELECT * 
+FROM 
+Colleges123
+WHERE college_name LIKE 'Y%';
+
+
+
+--- Last Words
+
+
+SELECT * 
+FROM 
+Colleges123
+WHERE college_name LIKE '%e';
+
+
+SELECT * 
+FROM 
+Colleges123
+WHERE college_name LIKE 'P_%';
+
+
+
+
+
+
+
+/*
+Basics Functions and Statements :--
+
+DISTINCT :-  This statments SELECTS the UNique Rows from a Database Table.
+
+
+*/
+
+SELECT * FROM Colleges123
+
+
+SELECT DISTINCT 
+college_library, college_dept ,college_id
+FROM Colleges123;
+
+
+
+SELECT COUNT(DISTINCT college_labs)
+FROM Colleges123; 
+
+/*
+SQL QUERY there are three things 
+1) Function :-- COUNT() , MAX () , AVG()
+2) Statements :-- SELECT  , DISTINCT  , ORDER BY  ,GROUPT BY , LIMIT , TOP , FETCH ,ALL_Operators 
+3) CLAUSES :--  WHERE , HAVING , IN  , EXISTS  , SUBQUERY 
+
+*/
+SELECT college_library AS CLib , college_name AS CN
+FROM Colleges123;
+
+-- CONCAT
+
+SELECT CONCAT(college_name , ' ,'  ,  ' ('  , college_dept , ')') AS C_N_Dt
+FROM Colleges123;
+
+
+SELECT* FROM Colleges123
+
+
+/*
+-- TOP :-- It gives the fixed number of rows from the databases(table).
+
+
+--> TOP CLAUSE  is not used in All DBMS
+beacuse different DBMS use different Keywords to select a fixed number of rows
+
+TOP :-- SQL SERVER   ,MS ACCESS
+
+LIMIT :- MYSQL , PostgreSQL , SQLIte 
+
+FETCH FIRST :-- Oracle 
+
+
+*/
+
+
+
+SELECT 
+TOP 3* FROM Colleges123;
+
+
+
+--SYNTAX LIMIT in MYSQL
+SELECT college_id ,college_dept
+FROM Colleges123
+LIMIT 3;
+
+
+-- Synatx FETCH FIRST CLause in Oracle:--
+
+SELECT * FROM Colleges123
+FETCH FIRST 3 ROWS ;
+
+
+
+/*
+
+SQL IS NULL AND NOT NULL
+
+IS NULL :-  condition is used to select the rows if that specified field is NULL.
+NOT NULL :- condition is used to select the rows if that specified field is NOT NULL.
+
+
+
+
+*/
+SELECT* FROM Colleges123
+WHERE college_labs IS  NULL;
+
+
+
+SELECT COUNT(*)
+FROM Colleges123
+WHERE college_dept IS NULL;
+
+
+
+-- MAX() :--  MAximum Value of a Column 
+-- MIN() :--  Minimum Value of a Column
+
+
+SELECT MAX(Order_amount)
+FROM Order11;
+
+
+SELECT MIN(Order_amount)
+FROM Order11;
+
+
+SELECT MIN(Order_amount) AS Or_amt
+FROM Order11;
+
+
+
+SELECT * FROM ingredients
+
+
+SELECT *
+FROM ingredients
+WHERE ingredient_price = (
+
+
+
+    SELECT MAX(ingredient_price)
+    FROM ingredients
+);
+
+
+-- ORDER BY 
+-- GROUP BY
+-- HAVING
+-- UNION
+-- INTERSECT
+-- EXCEPT
+-- SUBQUERY
+-- CASE
+-- EXISTS
+-- DATE AND TIME 
+
+
+
+
+
+
+
+-----ORDER BY 
+/*
+ORDER BY Clause :-- is used to sort the result set in Either in ASCENDING Or DESCENDING ORDER :
+
+
+*/
+
+SELECT *
+FROM Colleges123
+ORDER BY college_name ASC;
+
+
+SELECT *
+FROM Colleges123
+ORDER BY college_name , college_dept , college_library DESC;
+
+SELECT * FROM Colleges123
+
+SELECT college_name ,college_dept
+FROM Colleges123
+WHERE NOT college_name='DY patil College'  OR  NOT college_dept='Physics'
+ORDER BY college_name DESC;
+
+SELECT college_name ,college_dept
+FROM Colleges123
+WHERE NOT college_name='DY patil College' AND   NOT college_dept='Physics'
+ORDER BY college_name DESC;
+
+
+
+
+--GROUP BY :----
+/*
+GROUP BY :-- it is used to group the rows by one or More columns 
+
+*/
+
+
+SELECT college_name  , college_dept ,COUNT(*) AS NUMBERS
+FROM Colleges123
+GROUP BY college_name , college_dept;
+
+
+-- 10 7 of ADVANCED 3 of basics :-- NOT ACCEPTED //ACCEPTED
+SELECT * FROM Order11
+
+
+SELECT   Colleges123.college_id  , SUM(Order_amount) AS TOTAL_amount
+FROM Colleges123
+INNER JOIN Order11
+ON Colleges123.college_id = Order11.Order_id
+GROUP BY Colleges123.college_id ;
+
+
+---HAVING :---
+
+/*
+HAVING CLAUSE :--
+It is used if we suppose  need to filter the result set bases on conditions or on aggregate functions Such as MIN and MAX , SUM() and AVG() and COUNT()
+
+
+*/
+
+SELECT * FROM Colleges123;
+
+SELECT COUNT(Order_id) 
+FROM Order11
+GROUP BY Order_id
+HAVING COUNT(Order_id)>1;
+
+SELECT COUNT(college_id) , college_parking
+FROM Colleges123
+GROUP BY college_parking
+HAVING COUNT(college_id)>3;
+
+
+
+
+---GIVE ME THE DIFFERENCE BETWEEN HAVING CLAUSE AND WHERE CLAUSE ---
+
+/*
+
+HAVNG CLAUSE                                                                  WHERE CLAUSE
+
+1) checks the condition on group of rows                         1) Checks the condition on each individual row
+
+2) It used Aggregate functions                                    2) It not used with AGGregate Functions
+
+3) HAVING clause is executed after the Group                       3) WHERE CLAUSE is executed before the GROUP BY CLAUSE
+BY clause 
+
+*/
+
+
+-- UNION
+-- INTERSECT
+-- EXCEPT
+
+
+-- DATE AND TIME 
+-- CASE
+
+-- SUBQUERY
+-- EXISTS
+
+
+
+
+--Union
+/*
+UNION :- WHich selects the rows from two or more tables
+
+*/
+
+
+USE FAISAL 
+USE COACHX
+
+SELECT college_name , college_labs
+FROM Colleges123
+UNION
+SELECT  Stud_name,Stud_Country
+FROM Student
+UNION
+SELECT  FirstName , LastName
+FROM Persons;
+
+/*
+Table1
+UNION
+Table2
+UNION
+table3
+UNION
+table_n
+UNION
+*/
+
+SELECT college_name , college_labs
+FROM Colleges123
+UNION ALL
+SELECT  Stud_name,Stud_Country
+FROM Student
+
+
+/*
+
+UNION                                                               UNION ALL
+1) It only returns distinct rows                              1) It returns the duplicates values from the result sets 
+from the result
+set of two queries
+
+2) Slower in comparison                                       2) Executes FAST
+
+
+
+*/
+
+
+
+/*
+
+SQL JOIN and SQL UNION
+
+SQL JOIN                                                                        SQL  UNION
+
+1) It is used to combines the data                               1) It isew used to combine the data into new rows from the tables
+from different tabels into new columns
+
+2) It uses the common Columns in both of  tables                 2) It selects the data from two tables and combine the output.
+to fetch the data.
+
+
+
+3)Any nos of columns can be present in the tabels              3) Columns counts must be in the same in both the tables.
+
+
+4)Datatype of columns can be different                          4) Data type of columns must be same.
+
+*/
+
+
+
+
+
+-- Intersects :--
+
+A = {1,2,3,4,5}
+B = {4,5,6,7,8}
+
+A UNION  B = {1,2,3,4,5,4,5,6,7,8}
+A Intersects B = {4,5}
+
+
+
+SELECT college_id
+FROM Colleges123
+INTERSECT
+SELECT Order_id
+FROM Order11;
+
+
+
+
+
+SELECT college_id ,college_name 
+FROM Colleges123
+INNER JOIN 
+Order11
+ON 
+Colleges123.college_id = Order11.Order_id
+INTERSECT
+SELECT college_id ,college_name 
+FROM Colleges123
+RIGHT JOIN 
+Order11
+ON 
+Colleges123.college_id = Order11.Order_id
+
+
+
+----EXCEPT
+
+/*
+A EXCEPT STatement to filter the records when two select statements are being used to select records
+
+*/
+
+SELECT college_id , college_name
+FROM Colleges123
+EXCEPT
+select Order_id , Order_name
+FROM  Order11;
+
+
+
+
+
+
+--NEW DATASETS:--
+
+
+CREATE TABLE Books1
+(
+    id INT,
+    name VARCHAR(50) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    price INT NOT NULL
+ )
+ 
+CREATE TABLE Books2
+(
+    id INT,
+    name VARCHAR(50) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    price INT NOT NULL
+ )
+
+
+
+
+
+
+
+ INSERT INTO Books1
+ 
+VALUES
+(1, 'Book1', 'Cat1', 1800),
+(2, 'Book2', 'Cat2', 1500),
+(3, 'Book3', 'Cat3', 2000),
+(4, 'Book4', 'Cat4', 1300),
+(5, 'Book5', 'Cat5', 1500),
+(6, 'Book6', 'Cat6', 5000),
+(7, 'Book7', 'Cat7', 8000),
+(8, 'Book8', 'Cat8', 5000),
+(9, 'Book9', 'Cat9', 5400),
+(10, 'Book10', 'Cat10', 3200)
+ 
+INSERT INTO Books2
+ 
+VALUES
+ 
+(6, 'Book6', 'Cat6', 5000),
+(7, 'Book7', 'Cat7', 8000),
+(8, 'Book8', 'Cat8', 5000),
+(9, 'Book9', 'Cat9', 5400),
+(10, 'Book10', 'Cat10', 3200),
+(11, 'Book11', 'Cat11', 5000),
+(12, 'Book12', 'Cat12', 8000),
+(13, 'Book13', 'Cat13', 5000),
+(14, 'Book14', 'Cat14', 5400),
+(15, 'Book15', 'Cat15', 3200)
+
+
+
+SELECT * FROM Books1
+
+SELECT * FROM Books2
+
+
+
+
+
+SELECT id , name , category , price
+FROM Books1
+EXCEPT 
+SELECT id , name , category , price
+FROM Books2
+
+A = {1,2,3,4,5,6,7,8,9}
+B = {6,7,8,9,10,11,12,13}
+
+A EXCEPT B = {1,2,3,4,5,10,11,12,13}
+
+
+
+SELECT id , name , category , price
+FROM Books2
+EXCEPT 
+SELECT id , name , category , price
+FROM Books1
+
+
+
+
+-- DATE AND TIME :--
+
+/*
+US :-- mm-dd-yyyy
+UK : - dd-mm-yyyy
+
+
+
+
+Example                           FORMAT                       SQL Server                 MYSQL        PostGreSQL
+
+                                                             
+1) 2023-01-26 9:15:26          YYYY-MM-DD hh:mm:ss                 --                 DATETIME            TIMESTAMP
+
+2) 2023-01-27                  YYYY-MM-DD                        DATE                  DATE                DATE
+
+3) 9:17:28                     hh:mm:ss.nn                        TIME                 TIME                TIME
+
+4) 2023-01-26 9:19:30.55        YYYY-MM-DD hh:mm:ss.nn             DATETIME            ---                  ---- 
+
+5) 2023                           YYYY                            ---                   YEAR                ---
+
+
+6) 26-Jan-2023                 DD-MONTH-YY                     ---                     ------                 ----
+
+
+
+
+
+*/
+
+
+
+
+CREATE TABLE Users(
+     
+     ID INT , 
+     Username VARCHAR(50) , 
+     User_Full_Name VARCHAR(50) , 
+    User_date_of_birth DATE , 
+    User_last_Login   DATETIME ,
+    User_registered_at  DATETIME
+
+
+);
+
+DROP TABLE  Users;
+
+INSERT INTO Users(ID , Username , User_Full_Name ,User_date_of_birth , User_last_Login , User_registered_at )
+VALUES
+(1 , 'Hitesh' , 'Hitesh Jha' , '1999-04-03' , '2023-01-26 9:26:53.44'  , '2022-01-26 9:26:53.44')
+
+
+
+INSERT INTO Users ()
+VALUES
+(2 , 'Tarun' , 'Tarun' , '1998-04-03' , '2023-01-26 9:26:53.44'  , '2023-01-25 9:26:53.44'); 
+(1 , 'Hitesh' , 'Hitesh Jha' , '1999-04-03' , '2023-01-26 9:26:53.44'  , '2022-01-26 9:26:53.44'), 
+
+
+SELECT Username FROM Users
+WHERE User_date_of_birth= '1999-04-03';
+
+
+
+
+
+SELECT * FROM Users
+
+
+
+SELECT GETDATE();
+
+SELECT CURRENTTIME();
+
+
+SELECT CURRENT_TIMESTAMP;---for oracle
+
+
+
+DATEDIFF();:--- Itis used to determine the number of days differnce between two days
+
+
+SELECT DATEDIFF( , '2020-01-20 9:26:28' , '2023-01-26 9:28:20');
+
+
+
+
+-- CASE:-- 
+
+/*
+Case Statements it is used to check the conditions and perform the tasks on each row while selecting the data.
+
+
+
+Single Case :---
+SELECT column_names ,
+CASE
+    WHEN conditions THEN 'Own_statements'
+END AS New_Column_name
+FROM Table_name;
+
+
+
+Multiple Cases :--
+SELECT column_names ,
+CASE
+    WHEN conditions THEN 'Own_statements'
+    WHEN conditions THEN 'Own_statements'
+    WHEN conditions THEN 'Own_statements'
+    WHEN conditions THEN 'Own_statements'
+END AS New_Column_name
+FROM Table_name;
+
+
+Default case is ;--
+SELECT column_names ,
+CASE
+    WHEN conditions THEN 'Own_statements'
+    WHEN conditions THEN 'Own_statements'
+    WHEN conditions THEN 'Own_statements'
+    WHEN conditions THEN 'Own_statements'
+    ELSE 'Own_Statements'
+END AS New_Column_name
+FROM Table_name;
+
+*/
+
+SELECT college_id ,college_name ,college_dept ,college_library , 
+CASE
+   WHEN college_id=8  THEN 'ALLOWED'
+END AS Collegs_Permission
+FROM Colleges123;
+
+
+
+SELECT college_id ,college_name ,college_dept ,college_library , 
+CASE
+   WHEN college_id=8 AND college_dept= 'Biology'  THEN 'ALLOWED'
+END AS Collegs_Permission
+FROM Colleges123;
+
+
+
+SELECT college_id ,college_name ,college_dept ,college_library , 
+CASE
+   WHEN college_id=8 OR college_dept= 'Biology'  THEN 'ALLOWED'
+END AS Collegs_Permission
+FROM Colleges123;
+
+
+SELECT college_id ,college_name ,college_dept ,college_library , 
+CASE
+   WHEN college_id=8  THEN 'ALLOWED'
+   WHEN college_dept='MATHS' THEN 'DISSALLOWED'
+END AS Collegs_Permission
+FROM Colleges123;
+
+
+SELECT college_id ,college_name ,college_dept ,college_library , 
+CASE
+   WHEN college_id=8  THEN 'ALLOWED' 
+   WHEN college_dept='Biology' THEN 'DISSALLOWED'
+END AS Collegs_Permission
+FROM Colleges123;
+
+
+
+
+
+SELECT college_id ,college_name ,college_dept ,college_library , 
+CASE
+   WHEN college_id=8  THEN 'ALLOWED' 
+   WHEN college_dept='Maths' THEN 'ALLOWED'
+   ELSE 'Not Allowed'
+END AS Collegs_Permission
+FROM Colleges123;
+
+
+SELECT Order_id , Order_name,
+CASE
+   WHEN Order_amount>=10000 THEN (Order_amount-Order_amount*10/100)
+END AS  Remaining_Price
+FROM Order11;
+
+SELECT * FROM Colleges123
+
+
+
+
+
+CREATE TABLE Tarun(
+
+
+    Tarun_Id INT NOT NULL  , 
+    Traun_Last_name VARCHAR(20),
+    PRIMARY KEY (Tarun_Id),
+   
+);
+
+DROP TABLE Vikrant
+CREATE TABLE Vikrant(
+
+    Vikrant_Id INT NOT NULL , 
+    Vikrant_last_name VARCHAR(30) ,
+    Primary KEY(Vikrant_Id),
+   
+   
+);
+
+ALTER TABLE Vikrant
+ADD FOREIGN KEY (Tarun_Id)
+REFERENCES Tarun(Tarun_Id);
+
+
+
+
+
+---- SUBQUERIES
+/*
+
+SUBQUERIES:-
+To place the SQL Query inside the another Query
+
+
+In a Subquery , the outer Query's result is dependent on the result set of  the  Inner Query and it is also called as NESTED 
+Queries..
+
+
+SYNTAX OF SUBQUERY:--
+SELECT Column_name
+FROM Table_name
+WHERE Column_name expression_operator(
+
+
+    SELECT Column_name
+    FROM Table_name
+
+
+    ---or Performing any inner queries with some condtions
+)
+
+*/
+
+SELECT * FROM Order11 -- OUTER QUERY
+WHERE Order_amount = (
+
+    SELECT MIN(Order_amount)
+    FROM Order11  --- INNER QUERY 
+);
+
+
+---INNER JOIN WITH SUBQUERY
+SELECT college_id , college_name
+FROM Colleges123
+WHERE college_id IN(
+
+    SELECT college_id
+    FROM Order11
+);
+
+
+--- EXISTS :--
+
+/*
+EXISTS Operator executes the outer SQL query if Subquery is NOT NULL 
+
+
+*/
+
+SELECT * FROM Books1;
+SELECT * FROM Books2;
+
+
+SELECT id , name
+FROM Books1
+WHERE EXISTS(
+
+    SELECT id
+    FROM Books2
+    WHERE Books1.id = Books2.id
+);
+
+
+
+
+
+
+
+SELECT id , name
+FROM Books1
+WHERE NOT  EXISTS(
+
+    SELECT id
+    FROM Books2
+    WHERE Books1.id = Books2.id
+);
+
+
+DROP TABLE IF EXISTS Tarun
+
+
+
+CREATE TABLE IF NOT EXISTS Computer(
+
+    Com_name VARCHAR(20), 
+    Com_Version VARCHAR(30)
+);
+
+
+--What is Comments ?
+
+/*
+There are two types of Comments 
+1) Single Line Comments  ------ This is Single line comments
+2) Multi Line Comments     /* This is 
+                               multiline 
+                               comments 
+
+
+*/
+
+
+DROP TABLE Worker;
+
+
+CREATE TABLE Worker (
+	WORKER_ID INT NOT NULL PRIMARY KEY,
+	FIRST_NAME CHAR(25),
+	LAST_NAME CHAR(25),
+	SALARY INT,
+	DEPARTMENT CHAR(25)
+);
+
+INSERT INTO Worker 
+	(WORKER_ID, FIRST_NAME, LAST_NAME, SALARY, DEPARTMENT) VALUES
+		(001, 'Monika', 'Arora', 100000, 'HR'),
+		(002, 'Niharika', 'Verma', 80000,  'Admin'),
+		(003, 'Vishal', 'Singhal', 300000,  'HR'),
+		(004, 'Amitabh', 'Singh', 500000,  'Admin'),
+		(005, 'Vivek', 'Bhati', 500000,  'Admin'),
+		(006, 'Vipul', 'Diwan', 200000,  'Account'),
+		(007, 'Satish', 'Kumar', 75000,  'Account'),
+		(008, 'Geetika', 'Chauhan', 90000,  'Admin');
+
+
+
+DROP TABLE Bonus;
+
+CREATE TABLE Bonus (
+	WORKER_REF_ID INT,
+	BONUS_AMOUNT INT,
+	
+	FOREIGN KEY (WORKER_REF_ID)
+		REFERENCES Worker(WORKER_ID)
+        ON DELETE CASCADE
+);
+
+INSERT INTO Bonus 
+	(WORKER_REF_ID, BONUS_AMOUNT) VALUES
+		(001, 5000),
+		(002, 3000),
+		(003, 4000),
+		(001, 4500),
+		(002, 3500);
+
+
+
+
+CREATE TABLE Title (
+	WORKER_REF_ID INT,
+	WORKER_TITLE CHAR(25),
+
+	FOREIGN KEY (WORKER_REF_ID)
+		REFERENCES Worker(WORKER_ID)
+        ON DELETE CASCADE
+);
+
+INSERT INTO Title 
+	(WORKER_REF_ID, WORKER_TITLE) VALUES
+ (001, 'Manager'),
+ (002, 'Executive'),
+ (008, 'Executive'),
+ (005, 'Manager'),
+ (004, 'Asst. Manager'),
+ (007, 'Executive'),
+ (006, 'Lead'),
+ (003, 'Lead');
+
+
+
+ SELECT *
+ FROM Worker;
+
+
+ SELECT *
+ FROM Bonus;
+
+
+ SELECT * FROM
+ Title;
+
+
+
+/*
+Q1) Write an SQL Query to fetch the First_Name  and Last_Name of all workers working under Department with id = 4
+
+
+*/
+
+SELECT 
+WORKER_ID , First_Name ,Last_Name ,Department
+FROM Worker
+WHERE WORKER_ID = 4;
+
+
+/*
+Q2) Write an SQL Query to fetch the different departments  available from woker Table
+
+
+*/
+SELECT Department
+FROM Worker       --X
+
+
+SELECT DISTINCT(Department)
+FROM Worker;   ---- Correct 
+
+
+/*
+Q3) Write an SQL Query to fetch the count  of Workers working in Admin Department;
+
+*/
+
+SELECT COUNT(*)
+FROM Worker
+WHERE Department = 'Admin';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
